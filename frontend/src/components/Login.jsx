@@ -14,6 +14,8 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+
+
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -23,18 +25,33 @@ const Login = () => {
         },
         withCredentials: true
       });
-      navigate("/chat");
-      console.log(res);
-      dispatch(setAuthUser(res.data));
+  
+      if (res && res.data) {
+        dispatch(setAuthUser(res.data)); 
+        navigate("/chat");
+        console.log("Login successful:", res.data);
+      } else {
+        console.error("Unexpected API response:", res);
+        toast.error("Invalid response from server");
+      }
     } catch (error) {
-      toast.error(error.response.data.message);
-      console.log(error);
+      console.error("Login error:", error);
+  
+      // ✅ Ensure error.response exists before accessing error.response.data
+      if (error.response && error.response.data) {
+        toast.error(error.response.data.message || "An error occurred");
+      } else {
+        toast.error("Server is not responding. Please try again later.");
+      }
     }
+  
+    // ✅ Reset user state only if the request was successful
     setUser({
       username: "",
       password: ""
-    })
-  }
+    });
+  };
+  
   return (
     <div className="min-h-screen flex items-center justify-center"> {/* Gradient background */}
     <div className="max-w-md w-full mx-auto p-4 sm:p-6 bg-white bg-opacity-90 rounded-lg shadow-xl"> {/* White background with opacity */}

@@ -2,10 +2,10 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
    try {
-    await mongoose.connect('mongodb://localhost:27017/TheChattingApp')
+    await mongoose.connect(process.env.MONGO_URL)
     console.log("Database connected")
    } catch (error) {
-     console.log('Not connected  database')
+     console.log(error)
    }
 };
 export default connectDB;

@@ -7,10 +7,9 @@ import {useSelector} from "react-redux";
 
 const OtherUsers = () => {
    
-    // Custom hook
     useGetOtherUsers();
     const {otherUsers} = useSelector(store=>store.user);
-    if (!otherUsers) return; // early return in case no users available
+    if (!otherUsers) return; 
 
     return (
         <div className='overflow-y-auto h-full'>

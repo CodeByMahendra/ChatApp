@@ -3,9 +3,9 @@
 # dependencies
 # Ignore node_modules in backend and frontend
 node_modules/
-
-server/node_modules/
 frontend/node_modules/
+server/node_modules/
+
 
 
 /.pnp

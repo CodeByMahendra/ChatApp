@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from "./userSlice.js";
 import messageReducer from "./messageSlice.js";
-import socketReducer from "./socketSlice.js"; // Keep this if you need to maintain socket state separately
+import socketReducer from "./socketSlice.js"; 
 import {
     persistReducer,
     FLUSH,
@@ -17,13 +17,13 @@ const persistConfig = {
     key: 'root',
     version: 1,
     storage,
-    blacklist: ['socket'], // Exclude socket reducer from persistence
+    blacklist: ['socket'], 
 };
 
 const rootReducer = combineReducers({
     user: userReducer,
     message: messageReducer,
-    socket: socketReducer, // Keep this if needed, but won't persist
+    socket: socketReducer, 
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
