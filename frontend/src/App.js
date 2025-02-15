@@ -14,6 +14,7 @@ function App() {
   const { authUser } = useSelector(store => store.user);
   const dispatch = useDispatch();
 
+  const url = "https://chatapp-backend-ny29.onrender.com";
   useEffect(() => {
     let socketio;
 
@@ -42,11 +43,11 @@ function App() {
     },
     {
       path: "/login",
-      element: authUser ? <Navigate to="/chat" /> : <Login />
+      element: authUser ? <Navigate to="/chat" /> : <Login url={url}/>
     },
     {
       path: "/signup",
-      element: <Signup />
+      element: <Signup url={url} />
     },
     {
       path: "/chat",
