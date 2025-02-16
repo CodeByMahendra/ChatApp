@@ -23,7 +23,7 @@ const Signup = () => {
       console.log("Sending request to:", url);
       console.log("Request data:", user);
 
-      const res = await axios.post(url, user, {
+      const res = await axios.post(url+"/api/v1/user/signup", user, {
         headers: {
           "Content-Type": "application/json",
         },
