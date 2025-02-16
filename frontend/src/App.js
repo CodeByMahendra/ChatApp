@@ -19,7 +19,7 @@ function App() {
     let socketio;
 
     if (authUser) {
-      socketio = io(`${process.env.REACT_APP_BACKEND_URL}`, {
+      socketio = io(url, {
         query: {
           userId: authUser._id
         }
