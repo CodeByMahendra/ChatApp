@@ -19,7 +19,7 @@ const Signup = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:3005/api/v1/user/register";
+      const url = "https://chatapp-backend-ny29.onrender.com";
       console.log("Sending request to:", url);
       console.log("Request data:", user);
 
